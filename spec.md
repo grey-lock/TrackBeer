@@ -7,11 +7,13 @@ Specs:
   - Models inherit from ActiveRecord::Base
 - [x] Include more than one model class (list of model class names e.g. User, Post, Category)
   - Added User, Beer, and Brewery models
-- [ ] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
+- [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
+  - User has_many :beers, User has_many :breweries
 - [ ] Include user accounts
 - [ ] Ensure that users can't modify content created by other users
 - [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
-- [ ] Include user input validations
+- [x] Include user input validations
+  - Users must enter a unique email, unique username, and a password of length < 6
 - [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
