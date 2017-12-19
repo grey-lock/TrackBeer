@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         redirect '/users'
       else 
         flash[:message] = @user.errors.messages
-        redirect to '/signup'
+        redirect '/signup'
       end
     end
   end
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/users'
     else
+      flash[:message] = { "Error: ":"You must create an account before you can login!"}
       redirect '/login'
     end
   end
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
     if logged_in?
       erb :'/users/index'
     else
-      "You must login!"
+      flash[:message] = @user.errors.messages
       redirect '/login'
     end
   end
