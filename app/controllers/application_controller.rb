@@ -3,7 +3,6 @@ require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
   
-  
   configure do
     enable :sessions unless test?
     set :session_secret, "super_secure_session_secret" # TODO: generate sysrandom session secret in ENV
@@ -12,10 +11,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :index
   end
   
   ## Helpers ##
+  
+  private 
   
   helpers do 
     

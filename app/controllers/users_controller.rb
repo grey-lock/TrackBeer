@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect '/users'
     else
-      erb :'/users/login'
+      erb :'/login'
     end
   end
 
