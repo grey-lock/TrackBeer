@@ -9,7 +9,8 @@ Specs:
   - Have User, Beer, and Brewery models
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
   - User has_many :beers, User has_many :breweries
-- [ ] Include user accounts
+- [x] Include user accounts
+  - Users can signup/signout & login/logout.
 - [ ] Ensure that users can't modify content created by other users
 - [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [x] Include user input validations
