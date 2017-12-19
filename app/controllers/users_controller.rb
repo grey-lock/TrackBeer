@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
   
   # If not logged_in? Load Signup form, else load user index #
-  get '/signup' || '/users/new' do
-    if !logged_in?
+  get '/signup' do
+    # if !logged_in? # BUG: ERROR => breaking when user_id is not found even with condition to set if only it exists
       erb :'/users/new.html'
-    else
-      redirect '/users/index.html'
-    end
+    # else
+    #   redirect '/users/index.html'
+    # end
   end
   
-  post '/signup' || '/users/new' do
+  post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect '/signup'
     else
