@@ -1,14 +1,33 @@
 class UsersController < ApplicationController
-
+  
+  # If not logged_in? Load Signup form, else load beers index #
+  get '/signup' || '/users/new' do
+    if !logged_in?
+      erb :'/users/new.html'
+    else
+      redirect '/users'
+    end
+  end
+  
+  post '/signup' || '/users/new' do
+    if params[:username].empty? || params[:email].empty? || params[:password].empty?
+      redirect '/signup'
+    else
+      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+      session[:user_id] = @user.id
+      redirect '/users'
+    end
+  end
+  
   # GET: /users
   get "/users" do
     erb :"/users/index.html"
   end
 
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
-  end
+  # # GET: /users/new
+  # get "/users/new" do
+  #   erb :"/users/new.html"
+  # end
 
   # POST: /users
   post "/users" do
