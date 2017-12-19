@@ -1,5 +1,12 @@
 <h1>Sign Up for a new TrackBeer account</h1>
 
+<% if flash.has?(:message) %>
+  <% flash[:message].each do |key, value| %>
+    <%= [key, value].join(" ") %>
+    <br>
+  <% end %>  
+<% end %>
+
 <form action="/signup" method="post">
   <label for="username">Username:</label>
   <input type="text" name="username">

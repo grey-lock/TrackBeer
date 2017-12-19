@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
+  use Rack::Flash
   
-  # Working base commit: c57655e
   # If not logged_in? Load Signup form, else load user index #
   get '/signup' do
     # if !logged_in? # BUG: ERROR => breaking when user_id is not found even with condition to set if only it exists
@@ -15,9 +15,14 @@ class UsersController < ApplicationController
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect '/signup'
     else
-      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-      session[:user_id] = @user.id
-      redirect '/users'
+      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+      if @user.save
+        session[:user_id] = @user.id
+        redirect '/users'
+      else 
+        flash[:message] = @user.errors.messages
+        redirect to '/signup'
+      end
     end
   end
   
