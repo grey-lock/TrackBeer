@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   
   helpers do 
     
-    # If logged in, NOT NOT the current_user
+    # If logged in, not, not the current_user #
     def logged_in?
       !!current_user
     end
