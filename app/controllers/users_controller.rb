@@ -59,7 +59,12 @@ class UsersController < ApplicationController
   
   # GET: /users
   get "/users" do
-    erb :"/users/index.html"
+    if logged_in?
+      erb :'/users/index'
+    else
+      "You must login!"
+      redirect '/login'
+    end
   end
 
   # # GET: /users/new
