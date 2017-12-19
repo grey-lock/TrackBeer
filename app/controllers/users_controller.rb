@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   
-  # If not logged_in? Load Signup form, else load beers index #
+  # If not logged_in? Load Signup form, else load user index #
   get '/signup' || '/users/new' do
     if !logged_in?
       erb :'/users/new.html'
     else
-      redirect '/users'
+      redirect '/users/index.html'
     end
   end
   
@@ -16,6 +16,27 @@ class UsersController < ApplicationController
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
       redirect '/users'
+    end
+  end
+  
+  # If logged_in? redirect to /tweets, otherwise redirect to /login #
+  get '/login' do
+    if logged_in?
+      redirect '/users'
+    else
+      erb :'/users/login'
+    end
+  end
+
+  # Find user by username, if exists && password is authenticated, assign session[:user_id] to user, load /tweets. Else: load /login #
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect '/users'
+    else
+      redirect '/login'
     end
   end
   
@@ -53,4 +74,5 @@ class UsersController < ApplicationController
   delete "/users/:id/delete" do
     redirect "/users"
   end
+  
 end
