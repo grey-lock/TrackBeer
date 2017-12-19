@@ -2,11 +2,11 @@
 
 Specs:
 - [x] Use Sinatra to build the app
-  - Utilizes an MVC pattern
+  - Used Sinatra gem, Utilizes an MVC pattern
 - [x] Use ActiveRecord for storing information in a database
-  - Models inherit from ActiveRecord::Base
+  - Models inherit from ActiveRecord::Base and save records to the database
 - [x] Include more than one model class (list of model class names e.g. User, Post, Category)
-  - Added User, Beer, and Brewery models
+  - Have User, Beer, and Brewery models
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
   - User has_many :beers, User has_many :breweries
 - [ ] Include user accounts

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   
+  # Working base commit: c57655e
   # If not logged_in? Load Signup form, else load user index #
   get '/signup' do
     # if !logged_in? # BUG: ERROR => breaking when user_id is not found even with condition to set if only it exists
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
     # end
   end
   
+  # If: any empty fields => load /signup again. Else: Create the user with params, assign session[:user_id] to user, load /users #
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect '/signup'
