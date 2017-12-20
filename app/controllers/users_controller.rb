@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   # If not logged_in? Load Signup form, else load user index #
   get '/signup' do
-    if !logged_in? # BUG: ERROR => breaking when user_id is not found even with condition to set if only it exists
+    if !logged_in?
       erb :'/users/new.html'
     else
       redirect '/users/index.html'
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
   
   # If: any empty fields => load /signup again. Else: Create the user with params, assign session[:user_id] to user, load /users #
+  # If: unable to save username || email to database, display error message, reload signup page
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect '/signup'
@@ -35,15 +36,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # Find user by username, if exists && password is authenticated, assign session[:user_id] to user, load /tweets. Else: load /login #
+  # Find user by username, if exists && password is authenticated, assign session[:user_id] to user, load /users. Else: load /login #
   post '/login' do
     @user = User.find_by(username: params[:username])
-
-    if @user && @user.authenticate(params[:password])
+    
+    if @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/users'
     else
-      flash[:message] = { "Error: ":"You must create an account before you can login!"}
+      flash[:message] = { "Error: ":"You username and/or password do not match our records."} # Keep this ambiguous for security purposes #
       redirect '/login'
     end
   end
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
   # GET: /users
   get "/users" do
     if logged_in?
-      erb :'/users/index'
+      erb :'/users/index.html'
     else
       flash[:message] = @user.errors.messages
       redirect '/login'
