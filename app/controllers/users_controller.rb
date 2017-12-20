@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # If not logged_in? Load Signup form, else load user index #
   get '/signup' do
     if !logged_in?
-      erb :'/users/new'
+      erb :'/users/new.html'
     else
       redirect '/beers'
     end
