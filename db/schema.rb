@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 20171218200929) do
     t.string   "name"
     t.integer  "abv"
     t.string   "type"
-    t.string   "color"
     t.integer  "rating"
-    t.integer  "brewery_id"
+    t.string   "brewery"
     t.integer  "user_id"
     t.text     "comments"
     t.datetime "created_at", null: false
