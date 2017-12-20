@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       if @user.save
         session[:user_id] = @user.id
-        redirect '/users'
+        redirect '/beers'
       else 
         flash[:message] = @user.errors.messages
         redirect '/signup'
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   # If logged_in? redirect to /tweets, otherwise redirect to /login #
   get '/login' do
     if logged_in?
-      redirect '/users'
+      redirect '/beers'
     else
       erb :'/login'
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect '/users'
+      redirect '/beers'
     else
       flash[:message] = { "Error: ":"You username and/or password do not match our records."} # Keep this ambiguous for security purposes #
       redirect '/login'
