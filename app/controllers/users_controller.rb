@@ -27,13 +27,13 @@ class UsersController < ApplicationController
     end
   end
   
-  # If logged_in? redirect to /tweets, otherwise redirect to /login #
+  # If logged_in? redirect to /beers, otherwise redirect to /login #
   get '/login' do
-    # if logged_in?
-    #   redirect '/beers'
-    # else
+    if logged_in?
+      redirect '/beers'
+    else
       erb :'/login'
-    # end
+    end
   end
 
   # Find user by username, if exists && password is authenticated, assign session[:user_id] to user, load /users. Else: load /login #
