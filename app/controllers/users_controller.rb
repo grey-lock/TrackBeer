@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/new.html'
     else
-      redirect '/users/index.html'
+      redirect '/beers'
     end
   end
   
