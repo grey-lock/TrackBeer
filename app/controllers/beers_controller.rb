@@ -1,8 +1,14 @@
 class BeersController < ApplicationController
-
-  # GET: /beers
-  get "/beers" do
-    erb :"/beers/index.html"
+  
+  # If: logged_in? @user = current_user, load users beers. Else: redirect /login #
+  get '/beers' do
+    if logged_in?
+      @user = current_user
+      @beers = Beer.all
+      erb :'/beers/index.html'
+    else
+      redirect '/login'
+    end
   end
 
   # GET: /beers/new

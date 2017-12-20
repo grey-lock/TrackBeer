@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<h1>Welcome, <%= @user.username %> </h1>
+
+<h2>Here are your saved beers:</h2>
+
+<% @beers.each do |beer| %>
+  <%= beer.name %>
+<% end %>
