@@ -6,7 +6,7 @@ class CreateBeers < ActiveRecord::Migration
       t.string  :type
       # t.string  :color # Feature: add this once app works
       t.integer :rating
-      t.string  :brewery
+      t.string  :brewery_name
       # t.integer :brewery_id # Feature: add this once app works
       t.integer :user_id
       t.text    :comments

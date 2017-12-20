@@ -1,1 +1,25 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Add a new Beer to Your List</h1>
+<br>
+<form action="/beers" method="post">
+  <h3>Beer:</h3>
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" required>
+  <br>
+  <label for="abv">A.B.V.</label>
+  <input type="text" name="abv" id="abv">
+  <br>
+  <label for="type">Type</label>
+  <input type="text" name="type" id="type">
+  <br>
+  <label for="brewery_name">Brewery</label>
+  <input type="text" name="brewery_name" id="brewery_name">
+  <br>
+  <label for="rating">Rating</label>
+  <input type="text" name="rating" id="rating">
+  <br>
+  <label for="comments">Comments</label><br>
+  <textarea rows="3" name="comments" id="comments"></textarea>
+  <br><br>
+  <input type="submit" value="Submit">
+    </div>
+</form>

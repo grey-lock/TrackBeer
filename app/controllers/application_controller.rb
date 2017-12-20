@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
     
     # Find the current_user by finding their session[:user_id] if one exists #
     def current_user
-      @current_user = User.find(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
     
     # Logout method to clear the session #
