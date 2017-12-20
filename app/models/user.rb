@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
+  # Beers will have a user_id
   has_many :beers
+  # Breweries will have a user_id?
   has_many :breweries, through: :beers # Users can have favorite breweries that they can add through the beers they like
   
   has_secure_password
