@@ -18,11 +18,10 @@ ActiveRecord::Schema.define(version: 20171218200929) do
     t.integer  "abv"
     t.string   "type"
     t.integer  "rating"
-    t.string   "brewery_name"
     t.integer  "user_id"
     t.text     "comments"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "breweries", force: :cascade do |t|

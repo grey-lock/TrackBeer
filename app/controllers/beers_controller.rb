@@ -27,7 +27,6 @@ class BeersController < ApplicationController
       @beer = Beer.new(name: params[:name])
       @beer.abv = params[:abv]
       @beer.type = params[:type]
-      @beer.brewery_name = params[:brewery_name]
       @beer.rating = params[:rating]
       @beer.comments = params[:comments]
       @beer.user_id = current_user.id
