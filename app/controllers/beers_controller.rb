@@ -58,9 +58,16 @@ class BeersController < ApplicationController
     end
   end
 
-  # GET: /beers/5/edit
+  # If logged_in? and Beer's user is valid: Find beer by ID, load edit form. Otherwise load beer show page if not correct user. Else: /login #
   get "/beers/:id/edit" do
-    erb :"/beers/edit.html"
+    set_beer
+    if logged_in? && @beer.user == current_user
+      erb :"/beers/edit.html"
+    elsif logged_in? && @beer.user != current_user
+      redirect "/beers/#{@beer.id}"
+    else
+      redirect '/login'
+    end
   end
 
   # PATCH: /beers/5
