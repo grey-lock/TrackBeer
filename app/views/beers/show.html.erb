@@ -2,8 +2,8 @@
 <h2 id="brewery_name"><%= @beer.brewery.name %></h2>
 
 <% if @beer.user.id == current_user.id %>
-  <form action="/beers/<%=@beer.id%>/edit" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
+  <form action="/beers/<%=@beer.id%>/edit" method="get">
+  <!--<input id="hidden" type="hidden" name="_method" value="patch">-->
   <input type="submit" value="Edit Beer">
   </form>
   <br>
