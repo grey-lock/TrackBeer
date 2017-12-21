@@ -23,8 +23,8 @@ class BeersController < ApplicationController
   
   # User must be logged_in && params must be filled out to create an entry #
   post '/beers' do
-    if logged_in? && params.all? { |v| v != "" }
-      @beer = Beer.new(name: params[:name])
+    if logged_in?
+      @beer = Beer.new(name: params[:beer_name])
       @beer.abv = params[:abv]
       @beer.style = params[:style]
       @beer.color = params[:color]
@@ -32,11 +32,15 @@ class BeersController < ApplicationController
       @beer.comments = params[:comments]
       @beer.user_id = current_user.id
       
-      @beer.brewery = Brewery.find_or_create_by(name: params[:brewery_name])
-      @beer.brewery.town = params[:city]
-      @beer.brewery.state_or_region = params[:state_or_region]
-      @beer.brewery.country = params[:country]
-
+      if !params[:brewery_name].empty?
+        @beer.brewery = Brewery.find_or_create_by(name: params["brewery_name"])
+        @beer.brewery.town = params[:town]
+        @beer.brewery.state_or_region = params[:state_or_region]
+        @beer.brewery.country = params[:country]
+        @beer.brewery_id = @beer.brewery.id
+        @beer.brewery.save
+      end
+      
       @beer.save
       redirect "/beers/#{@beer.id}"
     else

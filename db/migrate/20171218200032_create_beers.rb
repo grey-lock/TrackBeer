@@ -6,7 +6,8 @@ class CreateBeers < ActiveRecord::Migration
       t.string  :style
       t.string  :color
       t.integer :rating
-      t.integer :user_id
+      t.belongs_to :user
+      t.belongs_to :brewery
       t.text    :comments
       
       t.timestamps null: false

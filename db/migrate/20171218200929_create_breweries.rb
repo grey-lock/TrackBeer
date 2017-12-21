@@ -5,6 +5,7 @@ class CreateBreweries < ActiveRecord::Migration
       t.string :town
       t.string :state_or_region
       t.string :country
+      # t.integer :brewery_id
       t.timestamps null: false
     end
   end

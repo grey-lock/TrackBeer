@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171218200929) do
     t.string   "color"
     t.integer  "rating"
     t.integer  "user_id"
+    t.integer  "brewery_id"
     t.text     "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
