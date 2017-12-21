@@ -33,7 +33,7 @@ class BeersController < ApplicationController
       @beer.user_id = current_user.id
       
       if !params[:brewery_name].empty?
-        @beer.brewery = Brewery.find_or_create_by(name: params["brewery_name"])
+        @beer.brewery = Brewery.find_or_create_by(name: params[:brewery_name])
         @beer.brewery.town = params[:town]
         @beer.brewery.state_or_region = params[:state_or_region]
         @beer.brewery.country = params[:country]
