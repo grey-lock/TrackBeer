@@ -77,12 +77,22 @@ class BeersController < ApplicationController
 
   # DELETE: /beers/5/delete
   delete "/beers/:id/delete" do
-    redirect "/beers"
+    if logged_in?
+      set_beer
+      if @beer.user_id == current_user.id
+        @beer.delete
+        redirect '/beers'
+      else
+        redirect '/beers'
+      end
+    else
+      redirect '/login'
+    end
   end
   
   private
   
   def set_beer
-    @beer = Beer.find(params[:id])
+    @beer = Beer.find_by_id(params[:id])
   end
 end
