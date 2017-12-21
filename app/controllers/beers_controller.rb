@@ -48,9 +48,14 @@ class BeersController < ApplicationController
     end
   end
 
-  # GET: /beers/5
+  # If logged_in, show the beer by finding the ID. Else: force /login page #
   get "/beers/:id" do
-    erb :"/beers/show.html"
+    if logged_in?
+      set_beer
+      erb :"/beers/show.html"
+    else
+      redirect '/login'
+    end
   end
 
   # GET: /beers/5/edit
@@ -66,5 +71,11 @@ class BeersController < ApplicationController
   # DELETE: /beers/5/delete
   delete "/beers/:id/delete" do
     redirect "/beers"
+  end
+  
+  private
+  
+  def set_beer
+    @beer = Beer.find(params[:id])
   end
 end
