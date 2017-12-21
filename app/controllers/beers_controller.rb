@@ -26,11 +26,17 @@ class BeersController < ApplicationController
     if logged_in? && params.all? { |v| v != "" }
       @beer = Beer.new(name: params[:name])
       @beer.abv = params[:abv]
-      @beer.type = params[:type]
+      @beer.style = params[:style]
+      @beer.color = params[:color]
       @beer.rating = params[:rating]
       @beer.comments = params[:comments]
       @beer.user_id = current_user.id
       
+      @beer.brewery = Brewery.find_or_create_by(name: params[:brewery_name])
+      @beer.brewery.town = params[:city]
+      @beer.brewery.state_or_region = params[:state_or_region]
+      @beer.brewery.country = params[:country]
+
       @beer.save
       redirect "/beers/#{@beer.id}"
     else

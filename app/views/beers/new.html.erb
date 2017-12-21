@@ -1,25 +1,41 @@
 <h1>Add a new Beer to Your List</h1>
 <br>
 <form action="/beers" method="post">
-  <h3>Beer:</h3>
+  <h2>Beer</h2>
+  <br>
   <label for="name">Name</label>
   <input type="text" name="name" id="name" required>
   <br>
   <label for="abv">A.B.V.</label>
   <input type="text" name="abv" id="abv">
   <br>
-  <label for="type">Type</label>
-  <input type="text" name="type" id="type">
-  <br>
-  <label for="brewery_name">Brewery</label>
-  <input type="text" name="brewery_name" id="brewery_name">
+  <label for="style">Style</label>
+  <input type="text" name="style" id="style">
+  <br>  <label for="color">Color</label>
+  <input type="text" name="color" id="color">
   <br>
   <label for="rating">Rating</label>
   <input type="text" name="rating" id="rating">
   <br>
-  <label for="comments">Comments</label><br>
-  <textarea rows="3" name="comments" id="comments"></textarea>
-  <br><br>
-  <input type="submit" value="Submit">
-    </div>
+  <br>
+  <label for="comments">Comments</label>
+  <br>
+  <textarea rows="4" name="comments" id="comments"></textarea>
+  
+  <h2>Brewery Name</h2>
+    <br>
+    <label for="brewery_name">Brewery</label>
+    <input type="text" name="brewery_name" id="brewery_name" required>
+    <br>
+    <label for="town">Town</label>
+    <input type="text" name="town" id="town">
+    <br>
+    <label for="state">State/Region</label>
+    <input type="text" name="state_or_region" id="state_or_region">
+    <br>
+    <label for="country">Country</label>
+    <input type="text" name="country" id="country">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
 </form>

@@ -2,11 +2,10 @@ class CreateBeers < ActiveRecord::Migration
   def change
     create_table :beers do |t|
       t.string  :name
-      t.integer :abv
+      t.float :abv
       t.string  :type
-      # t.string  :color # Feature: add this once app works
+      t.string  :color
       t.integer :rating
-      # t.integer :brewery_id # Feature: add this once app works
       t.integer :user_id
       t.text    :comments
       
