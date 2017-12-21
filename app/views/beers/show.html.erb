@@ -1,1 +1,36 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1 id="beer_name"><%= @beer.name %> Information</h1>
+<h2 id="brewery_name"><%= @beer.brewery.name %></h2>
+
+<% if @beer.user.id == current_user.id %>
+  <form action="/beers/<%=@beer.id%>/edit" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="submit" value="Edit Beer">
+  <br>
+  <form action="/beers/<%=@beer.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <br>
+  <input type="submit" value="Delete Beer">
+  </form>
+<% end %>
+
+<br>
+
+<h4 class="section">Brewed By:</h4>
+<div><%= @beer.brewery.name %></div>
+
+<% if @beer.brewery.town != "" && @beer.brewery.state_or_region != "" %>
+    <%= @beer.brewery.town %>, <%= @beer.brewery.state_or_region %>, <%= @beer.brewery.country %>
+<% end %>
+
+<br>
+
+<h4 class="section">A.B.V:</h4>
+<%= @beer.abv %>
+<h4 class="section">Style:</h4>
+<%= @beer.style %>
+<h4 class="section">Color:</h4>
+<%= @beer.color %>
+<h4 class="section">Rating:</h4>
+<%= @beer.rating %>
+<h4 class="section">Comments:</h4>
+<%= @beer.comments %>
