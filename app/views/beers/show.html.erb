@@ -5,10 +5,10 @@
   <form action="/beers/<%=@beer.id%>/edit" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="submit" value="Edit Beer">
+  </form>
   <br>
   <form action="/beers/<%=@beer.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <br>
   <input type="submit" value="Delete Beer">
   </form>
 <% end %>
@@ -22,6 +22,7 @@
     <%= @beer.brewery.town %>, <%= @beer.brewery.state_or_region %>, <%= @beer.brewery.country %>
 <% end %>
 
+<br>
 <br>
 
 <h4 class="section">A.B.V:</h4>
