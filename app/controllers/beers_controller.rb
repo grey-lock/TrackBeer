@@ -2,7 +2,7 @@ class BeersController < ApplicationController
   
   # If: logged_in? @user = current_user, load users beers. Else: redirect /login #
   get '/beers' do
-    if logged_in?
+    if logged_in? && current_user
       @user = current_user
       @beers = Beer.all
       erb :'/beers/index.html'

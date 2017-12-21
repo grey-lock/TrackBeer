@@ -11,11 +11,13 @@ Specs:
   - User has_many :beers, User has_many :breweries
 - [x] Include user accounts
   - Users can signup/signout & login/logout.
-- [ ] Ensure that users can't modify content created by other users
+- [x] Ensure that users can't modify content created by other users
+  - Only a logged in user can modify their own content. They can view other beers submitted but cannot edit, update, or delete them.
 - [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [x] Include user input validations
   - Users must enter a unique email, unique username, and a password of length > 6
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
+  - Users must include a name for both beer_name and brewery_name
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm

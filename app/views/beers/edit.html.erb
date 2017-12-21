@@ -1,1 +1,35 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h2>Edit <%= @beer.name %></h2>
+
+<form action="/beers/<%=@beer.id%>" method="post">
+  <div>
+    <input type="hidden" id="hidden" name="_method" value="patch">
+    <h3>Beer:</h3>
+    <label for="beer_name">Beer Name</label>
+    <input type="text" name="beer[name]" id="beer_name" value="<%=@beer.name%>" required>
+    <label for="abv">A.B.V.</label>
+    <input type="text" name="beer[abv]" id="abv" value="<%=@beer.abv%>">
+    <label for="style">Style</label>
+    <input type="text" name="beer[style]" id="style" value="<%=@beer.style%>">
+    <label for="style">Color</label>
+    <input type="text" name="beer[color]" id="color" value="<%=@beer.color%>">
+    <label for="rating">Rating</label>
+    <input type="text" name="beer[rating]" id="rating" value="<%=@beer.rating%>">
+    <label for="comments">Comments</label>
+    <textarea rows="4" name="beer[comments]" id="comments"><%=@beer.comments%></textarea>
+  </div>
+
+  <div class="form-group">
+    <h3>Brewery:</h3>
+    <label for="brewery_name">Brewery Name</label>
+    <input type="text" name="brewery_name" id="brewery_name" value="<%=@beer.brewery.name%>" required>
+    <label for="town">Town</label>
+    <input class="form-control" type="text" name="town" id="town" value="<%=@beer.brewery.town%>">
+    <label for="state_or_region">State/Region</label>
+    <input type="text" name="state_or_region" id="state_or_region" value="<%=@beer.brewery.state_or_region%>">
+    <label for="country">Country</label>
+    <input type="text" name="country" id="country" value="<%=@beer.brewery.country%>">
+    </div>
+    <div>
+        <input type="submit" value="Update">
+    </div>
+</form>
