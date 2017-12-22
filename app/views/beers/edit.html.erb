@@ -14,20 +14,23 @@
     <input type="text" name="beer[color]" id="color" value="<%=@beer.color%>">
     <label for="rating">Rating</label>
     <input type="text" name="beer[rating]" id="rating" value="<%=@beer.rating%>">
+    <br>
+    <br>
     <label for="comments">Comments</label>
+    <br>
     <textarea rows="4" name="beer[comments]" id="comments"><%=@beer.comments%></textarea>
   </div>
 
   <div>
     <h3>Brewery:</h3>
     <label for="brewery_name">Brewery Name</label>
-    <input type="text" name="brewery_name" id="brewery_name" value="<%=@beer.brewery.name%>" required>
+    <input type="text" name="brewery[name]" id="brewery_name" value="<%=@beer.brewery.name%>" required>
     <label for="town">Town</label>
-    <input class="form-control" type="text" name="town" id="town" value="<%=@beer.brewery.town%>">
+    <input type="text" name="brewery[town]" id="town" value="<%=@beer.brewery.town%>">
     <label for="state_or_region">State/Region</label>
-    <input type="text" name="state_or_region" id="state_or_region" value="<%=@beer.brewery.state_or_region%>">
+    <input type="text" name="brewery[state_or_region]" id="state_or_region" value="<%=@beer.brewery.state_or_region%>">
     <label for="country">Country</label>
-    <input type="text" name="country" id="country" value="<%=@beer.brewery.country%>">
+    <input type="text" name="brewery[country]" id="country" value="<%=@beer.brewery.country%>">
     </div>
     <div>
         <input type="submit" value="Update">

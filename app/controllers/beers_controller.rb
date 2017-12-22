@@ -70,12 +70,20 @@ class BeersController < ApplicationController
     end
   end
 
-  # PATCH: /beers/5
+  # If logged_in? && beer has a name, update the name + attributes, redirect to that beer page. Else: Reload edit form #
   patch "/beers/:id" do
-    redirect "/beers/:id"
+    if logged_in? && current_user
+      set_beer
+      @beer.update(params[:beer]) # Mass update the beer attributes
+      @beer.brewery.update(params[:brewery]) # Mass update brewery attributes
+      redirect "/beers/#{@beer.id}"
+    else
+      flash[:message] = @user.errors.messages
+      redirect "/beers/#{params[:id]}/edit"
+    end
   end
 
-  # DELETE: /beers/5/delete
+  # Delete beer if logged_in? and current_user is the creator. Otherwise, load beer index page. Else: reload /login #
   delete "/beers/:id/delete" do
     if logged_in?
       set_beer
