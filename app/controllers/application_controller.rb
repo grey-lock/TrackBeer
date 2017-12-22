@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
   
   configure do
     enable :sessions unless test?
-    set :session_secret, "super_secure_session_secret" # TODO: generate sysrandom session secret in ENV
+    set :session_secret, "beer_is_sick" # TODO: generate sysrandom session secret in ENV
     set :public_folder, 'public'
     set :views, 'app/views'
   end
@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
   
   helpers do 
     
-    # If logged in, not, not the current_user #
+    # Double bang current_user means they aren't logged in #
     def logged_in?
       !!current_user
     end
