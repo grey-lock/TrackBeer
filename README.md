@@ -1,10 +1,10 @@
 # TrackBeer
 
-TrackBeer is a Sinatra web application built in Ruby that allows you to keep track of your favorite beers.
+TrackBeer is a Sinatra web application built in Ruby that allows you to keep track of your favorite beers. 
 
 Users can signup with a unique username, email, and password to create an account. 
 
-Once a user has signed up, they can login to their account where they can Create, Read, Update, and Delete information about their specific beer.
+Once a user has signed up, users can login to their account in order to Create, Read, Update, and Delete information about their specific beer using RESTful routes.
 
 Users can add/edit beer information such as Name, A.B.V, Style, Color, Rating, and add comments/notes about the beer.
 
