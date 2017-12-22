@@ -4,8 +4,8 @@ require 'rack-flash'
 class ApplicationController < Sinatra::Base
   
   configure do
-    enable :sessions unless test?
-    set :session_secret, "beer_is_sick" # TODO: generate sysrandom session secret in ENV
+    enable :sessions unless test? # TODO Feature: Change sessions settings so upon server shutdown, and/or based on time, they expire
+    set :session_secret, "beer_is_sick" # TODO Feature: generate sysrandom session secret in ENV
     set :public_folder, 'public'
     set :views, 'app/views'
   end
@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
+  
   
   ## Helpers ##
   
