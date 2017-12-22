@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   # If: unable to save username || email to database, display error message, reload signup page
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
+      flash[:message] = { "Error: ":"You must enter a valid username, email, and/or password."}
       redirect '/signup'
     else
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
