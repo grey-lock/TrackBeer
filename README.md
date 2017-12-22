@@ -10,7 +10,7 @@ Users can add/edit beer information such as Name, A.B.V, Style, Color, Rating, a
 
 Users can also add Brewery information such as Name, Town, State/Region, and Country.
 
-Only users that created the beer can edit, or delete the information for that beer, and currently all beers that are created are viewable if an account is made.
+Only users that created the beer can edit or delete the information for that beer. Currently all beers that are created are viewable if an account is logged in.
 
 
 ## Installation
