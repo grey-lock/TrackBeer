@@ -1,8 +1,15 @@
 <h1 id="beer_name"><%= @beer.name %> Information</h1>
 <h2 id="brewery_name"><%= @beer.brewery.name %></h2>
 
-<% if @beer.user.id == current_user.id %>
-<a href="/beers/<%=@beer.id%>/edit"><button class="btn btn-primary">Edit Beer</button></a>
+<a href="/beers/new">Add A New Beer</a>
+<br>
+<br>
+
+
+<% if @beer.user.id == current_user.id 
+# Replace this with a javascript/jquery submit function to remove the ugly delete button %>
+  <a href="/beers/<%=@beer.id%>/edit">Edit Beer</a>
+  <br>
   <br>
   <form action="/beers/<%=@beer.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
