@@ -2,6 +2,14 @@
 
 <h2>Here are your recently saved beers:</h2>
 
+<%= "Oh no, you do not have any saved beers!" if @user.beers.count == 0 %>
+<br>
+<br>
+
+<a href="/beers/new">Add A New Beer</a>
+<br>
+<br>
+
 <% @user.beers.reverse.each do |beer| %>
     <h4><a href="/beers/<%=beer.id%>"><%= beer.name %></a></h4>
     <p>
