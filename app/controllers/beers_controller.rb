@@ -72,14 +72,18 @@ class BeersController < ApplicationController
 
   # If logged_in? && beer has a name, update the name + attributes, redirect to that beer page. Else: Reload edit form #
   patch "/beers/:id" do
-    if logged_in? && current_user
-      set_beer
+    set_beer
+    if logged_in? && @beer.user == current_user
       @beer.update(params[:beer]) # Mass update the beer attributes
       @beer.brewery.update(params[:brewery]) # Mass update brewery attributes
       redirect "/beers/#{@beer.id}"
     else
-      flash[:message] = @user.errors.messages
-      redirect "/beers/#{params[:id]}/edit"
+      if logged_in?
+        flash[:message] = @user.errors.messages
+        redirect "/beers/#{@beer.id}"
+      else
+        redirect '/login'
+      end
     end
   end
 

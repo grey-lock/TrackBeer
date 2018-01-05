@@ -22,6 +22,9 @@
     
     <footer class="branding">
       <small>&copy; 2017 <a href="/"><strong>TrackBeer LLC</strong></small></a>
+      <% if logged_in? %>
+      <a href="/logout">Logout</a> 
+      <% end %>
     </footer>
   </div>
 
