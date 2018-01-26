@@ -1,11 +1,5 @@
 <h1>Login</h1>
 
-<% if flash.has?(:message) %>
-  <% flash[:message].each do |key, value| %>
-    <%= [key, value].join(" ") %>
-    <br>
-  <% end %>  
-<% end %>
 <br>
 <form action="/login" method="post">
   <input type="text" name="username" value="username">
@@ -16,4 +10,4 @@
 </form>
 <br>
 
-<a href="/signup">Signup</a>
+<a href="/signup" class="nav-link">Signup</a>

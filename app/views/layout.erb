@@ -14,18 +14,59 @@
   <link rel="stylesheet" href="/stylesheets/lux.css" />
 </head>
 <body>
+<div class="container">
+  <div class="navbar-header" id="nav-link">
+   <p id="user_info"><%= "Signed in as #{current_user.email}" if logged_in? %></p>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Trackbeer</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor03">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+      <% if logged_in? %>
+      <li class="nav-item">
+        <a class="nav-link" href="/beers">Beers</a>
+      <li class="nav-item">
+        <a href="/logout" class= "nav-link">Sign Out</a>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Signup</a>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<% if flash %>
+  <% if flash.has?(:message) %>
+    <div class="alert alert-dismissible alert-danger" id="flash-notice">
+      <p>
+        <% flash[:message].each do |key, value| %>
+          <%= [key, value].join(" ") %>
+        <% end %>  
+      <% end %>  
+    </p>
+  </div>
+<% end %>
   
   <div class="container">
-
-      <%= yield %>
-
+    <%= yield %>
   </div>
+
+    
   <div class="container">
     <footer class="branding">
       <small>&copy; 2017 <a href="/"><strong>TrackBeer LLC</strong></small></a>
-      <% if logged_in? %>
-      <a class= "nav-link" href="/logout">Logout</a> 
-      <% end %>
     </footer>
     </div>
 
